@@ -175,7 +175,7 @@ main > ul {
   filter: var(--content-bg-filter);
 }
 #patchnote {
-  display: block !important;
+  display: none !important;
   width: 100% !important;
   margin: 0 !important;
   background: none !important;
@@ -190,7 +190,7 @@ main > ul {
   padding: 0 0.5rem;
 }
 #init-menu {
-  display: block !important;
+  display: none !important;
   width: 100% !important;
   margin: 0 !important;
   height: 3rem;
