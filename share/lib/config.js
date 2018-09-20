@@ -1,7 +1,7 @@
 'use strict'
 
-const VERSION = '0.7.18'
-const CODENAME = 'Kagerou Days'
+const VERSION = '0.7.22'
+const CODENAME = 'Never-Lost Word'
 
 const CONFIG_DEFAULT = {
   lang: 'ko',
@@ -44,8 +44,8 @@ const CONFIG_DEFAULT = {
         'deal.pct',
         'deal.per_second',
         'deal.critical',
-        'deal.swing',
-        'deal.miss'
+        'deal.direct',
+        'deal.crit_direct'
       ]
     }, {
       id: 1,
@@ -230,8 +230,9 @@ const COLUMN_USE_LARGER = {
 }
 
 const PET_MAPPING = {
-  '카벙클 에메랄드': 'emerald',
-  '카벙클 토파즈': 'topaz',
+  '카벙클 에메랄드': 'acn-pet',
+  '카벙클 토파즈': 'acn-pet',
+  '카벙클 루비': 'acn-pet',
   '가루다 에기': 'garuda',
   '타이탄 에기': 'titan',
   '이프리트 에기': 'ifrit',
@@ -239,8 +240,9 @@ const PET_MAPPING = {
   '요정 셀레네': 'selene',
   '자동포탑 룩': 'rook',
   '자동포탑 비숍': 'bishop',
-  'Emerald Carbuncle': 'emerald',
-  'Topaz Carbuncle': 'topaz',
+  'Emerald Carbuncle': 'acn-pet',
+  'Topaz Carbuncle': 'acn-pet',
+  'Ruby Carbuncle': 'acn-pet',
   'Garuda-Egi': 'garuda',
   'Titan-Egi': 'titan',
   'Ifrit-Egi': 'ifrit',
@@ -248,8 +250,9 @@ const PET_MAPPING = {
   'Selene': 'selene',
   'Rook Autoturret': 'rook',
   'Bishop Autoturret': 'bishop',
-  'カーバンクル・エメラルド': 'emerald',
-  'カーバンクル・トパーズ': 'topaz',
+  'カーバンクル・エメラルド': 'acn-pet',
+  'カーバンクル・トパーズ': 'acn-pet',
+  'カーバンクル・ルビー': 'acn-pet',
   'ガルーダ・エギ': 'garuda',
   'タイタン・エギ': 'titan',
   'イフリート・エギ': 'ifrit',
@@ -257,6 +260,7 @@ const PET_MAPPING = {
   'フェアリー・セレネ': 'selene',
   'オートタレット・ルーク': 'rook',
   'オートタレット・ビショップ': 'bishop'
+  // TODO: add another languages
 }
 
 /*
@@ -284,6 +288,8 @@ const APRIL_FOOL_CLASS_REMAP = {
 const COLUMN_INDEX = {
   i: {
     icon: {
+      v: _ => ' '
+    }/* {
       v: _ => resolveClass(_.Job, _.name)[0],
       f: _ => {
         let job = _.toLowerCase()
@@ -294,10 +300,9 @@ const COLUMN_INDEX = {
          && job in APRIL_FOOL_CLASS_REMAP) {
           job = APRIL_FOOL_CLASS_REMAP[job]
         }
-        */
-        return `<img src="../share/img/class/${job || 'empty'}.png" class="clsicon" />`
+        /
       }
-    },
+    } */,
     class: {
       v: _ => {
         let job = resolveClass(_.Job, _.name)[0]
@@ -321,7 +326,7 @@ const COLUMN_INDEX = {
           if((flag & 2) && typeof name[1] === 'string') // Lastname
             name[1] = name[1][0] + '.'
         }
-        return `<span class="${you? 'name-you' : ''}">${name.join(' ')}</span>`
+        return name.join(' ')
       }
     }
   },

@@ -5,18 +5,19 @@
     <title> kagerou - Settings </title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,700|Roboto:400,700">
-    <link rel="stylesheet" href="../overlay/css/reset.css?v=transparent-answer" />
-    <link rel="stylesheet" href="index.css?v=transparent-answer" />
-    <link rel="stylesheet" href="media.css?v=transparent-answer" />
-    <link rel="stylesheet" href="dialog.css?v=transparent-answer" />
-    <script src="lib/sortable-1.5.0-rc1.js"> </script>
-    <script src="../share/lib/util.js?v=transparent-answer"> </script>
-    <script src="../share/lib/locale.js?v=transparent-answer"> </script>
-    <script src="../share/lib/config.js?v=transparent-answer"> </script>
-    <script src="lib/dialog.js?v=transparent-answer"> </script>
-    <script src="lib/ui.js?v=transparent-answer"> </script>
-    <script src="lib/tabconfig.js?v=transparent-answer"> </script>
-    <script src="lib/import-export.js?v=transparent-answer"> </script>
+    <link rel="stylesheet" href="../overlay/css/reset.css?v=daze-days" />
+    <link rel="stylesheet" href="index.css?v=daze-days" />
+    <link rel="stylesheet" href="media.css?v=daze-days" />
+    <link rel="stylesheet" href="dialog.css?v=daze-days" />
+    <link rel="stylesheet" href="../share/css/job-icons.css?v=daze-days" />
+    <script src="lib/sortable-1.7.0-min.js"> </script>
+    <script src="../share/lib/util.js?v=daze-days"> </script>
+    <script src="../share/lib/locale.js?v=daze-days"> </script>
+    <script src="../share/lib/config.js?v=daze-days"> </script>
+    <script src="lib/dialog.js?v=daze-days"> </script>
+    <script src="lib/ui.js?v=daze-days"> </script>
+    <script src="lib/tabconfig.js?v=daze-days"> </script>
+    <script src="lib/import-export.js?v=daze-days"> </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.6/ace.js"> </script>
 
     <template id="template-tab">
@@ -218,6 +219,7 @@ document.addEventListener('DOMContentLoaded', _ => {
               <option value="cn"> 中文 </option>
               <option value="en"> English </option>
               <option value="de"> Deutsch </option>
+              <option value="fr"> Français </option>
             </select>
           </p>
         </article>
@@ -744,20 +746,6 @@ document.addEventListener('DOMContentLoaded', _ => {
             </button>
           </p>
           <p class="control">
-            <label for="input-color-gauge-default"
-                   data-locale="config.color.gauge-default">
-              기본 색상
-            </label>
-            <span class="input-group">
-              <label class="input-value-style" for="input-color-gauge-default">
-              </label>
-              <input type="text" id="input-color-gauge-default"
-                     data-config-key="color.gauge-default"
-                     data-style="background"
-                     style="width: 10rem" />
-            </span>
-          </p>
-          <p class="control">
             <label for="input-color-gauge-opacity"
                    data-locale="config.color.gauge-opacity">
               투명도
@@ -834,8 +822,8 @@ document.addEventListener('DOMContentLoaded', _ => {
               나이트 <span class="text-muted">(검술사)</span>
             </label>
             <span class="input-group">
-              <label class="input-value-style job" for="input-color-pld">
-                <img src="../share/img/class/pld.png" />
+              <label class="input-value-style job class-pld" for="input-color-pld">
+                <span class="flex-column-i-icon"></span>
               </label>
               <input type="text" id="input-color-pld" style="width: 10rem"
                      data-config-key="color.pld"
@@ -847,8 +835,8 @@ document.addEventListener('DOMContentLoaded', _ => {
               전사 <span class="text-muted">(도끼술사)</span>
             </label>
             <span class="input-group">
-              <label class="input-value-style job" for="input-color-war">
-                <img src="../share/img/class/war.png" />
+              <label class="input-value-style job class-war" for="input-color-war">
+                <span class="flex-column-i-icon"></span>
               </label>
               <input type="text" id="input-color-war" style="width: 10rem"
                      data-config-key="color.war"
@@ -860,8 +848,8 @@ document.addEventListener('DOMContentLoaded', _ => {
               암흑기사
             </label>
             <span class="input-group">
-              <label class="input-value-style job" for="input-color-drk">
-                <img src="../share/img/class/drk.png" />
+              <label class="input-value-style job class-drk" for="input-color-drk">
+                <span class="flex-column-i-icon"></span>
               </label>
               <input type="text" id="input-color-drk" style="width: 10rem"
                      data-config-key="color.drk"
@@ -878,8 +866,8 @@ document.addEventListener('DOMContentLoaded', _ => {
               몽크 <span class="text-muted">(격투사)</span>
             </label>
             <span class="input-group">
-              <label class="input-value-style job" for="input-color-mnk">
-                <img src="../share/img/class/mnk.png" />
+              <label class="input-value-style job class-mnk" for="input-color-mnk">
+                <span class="flex-column-i-icon"></span>
               </label>
               <input type="text" id="input-color-mnk" style="width: 10rem"
                      data-config-key="color.mnk"
@@ -891,8 +879,8 @@ document.addEventListener('DOMContentLoaded', _ => {
               용기사 <span class="text-muted">(창술사)</span>
             </label>
             <span class="input-group">
-              <label class="input-value-style job" for="input-color-drg">
-                <img src="../share/img/class/drg.png" />
+              <label class="input-value-style job class-drg" for="input-color-drg">
+                <span class="flex-column-i-icon"></span>
               </label>
               <input type="text" id="input-color-drg" style="width: 10rem"
                      data-config-key="color.drg"
@@ -904,8 +892,8 @@ document.addEventListener('DOMContentLoaded', _ => {
               음유시인 <span class="text-muted">(궁술사)</span>
             </label>
             <span class="input-group">
-              <label class="input-value-style job" for="input-color-brd">
-                <img src="../share/img/class/brd.png" />
+              <label class="input-value-style job class-brd" for="input-color-brd">
+                <span class="flex-column-i-icon"></span>
               </label>
               <input type="text" id="input-color-brd" style="width: 10rem"
                      data-config-key="color.brd"
@@ -917,8 +905,8 @@ document.addEventListener('DOMContentLoaded', _ => {
               닌자 <span class="text-muted">(쌍검사)</span>
             </label>
             <span class="input-group">
-              <label class="input-value-style job" for="input-color-nin">
-                <img src="../share/img/class/nin.png" />
+              <label class="input-value-style job class-nin" for="input-color-nin">
+                <span class="flex-column-i-icon"></span>
               </label>
               <input type="text" id="input-color-nin" style="width: 10rem"
                      data-config-key="color.nin"
@@ -930,8 +918,8 @@ document.addEventListener('DOMContentLoaded', _ => {
               소환사 <span class="text-muted">(비술사)</span>
             </label>
             <span class="input-group">
-              <label class="input-value-style job" for="input-color-smn">
-                <img src="../share/img/class/smn.png" />
+              <label class="input-value-style job class-smn" for="input-color-smn">
+                <span class="flex-column-i-icon"></span>
               </label>
               <input type="text" id="input-color-smn" style="width: 10rem"
                      data-config-key="color.smn"
@@ -943,8 +931,8 @@ document.addEventListener('DOMContentLoaded', _ => {
               흑마도사 <span class="text-muted">(주술사)</span>
             </label>
             <span class="input-group">
-              <label class="input-value-style job" for="input-color-blm">
-                <img src="../share/img/class/blm.png" />
+              <label class="input-value-style job class-blm" for="input-color-blm">
+                <span class="flex-column-i-icon"></span>
               </label>
               <input type="text" id="input-color-blm" style="width: 10rem"
                      data-config-key="color.blm"
@@ -956,8 +944,8 @@ document.addEventListener('DOMContentLoaded', _ => {
               기공사
             </label>
             <span class="input-group">
-              <label class="input-value-style job" for="input-color-mch">
-                <img src="../share/img/class/mch.png" />
+              <label class="input-value-style job class-mch" for="input-color-mch">
+                <span class="flex-column-i-icon"></span>
               </label>
               <input type="text" id="input-color-mch" style="width: 10rem"
                      data-config-key="color.mch"
@@ -969,8 +957,8 @@ document.addEventListener('DOMContentLoaded', _ => {
               사무라이
             </label>
             <span class="input-group">
-              <label class="input-value-style job" for="input-color-sam">
-                <img src="../share/img/class/sam.png" />
+              <label class="input-value-style job class-sam" for="input-color-sam">
+                <span class="flex-column-i-icon"></span>
               </label>
               <input type="text" id="input-color-sam" style="width: 10rem"
                      data-config-key="color.sam"
@@ -982,8 +970,8 @@ document.addEventListener('DOMContentLoaded', _ => {
               적마도사
             </label>
             <span class="input-group">
-              <label class="input-value-style job" for="input-color-rdm">
-                <img src="../share/img/class/rdm.png" />
+              <label class="input-value-style job class-rdm" for="input-color-rdm">
+                <span class="flex-column-i-icon"></span>
               </label>
               <input type="text" id="input-color-rdm" style="width: 10rem"
                      data-config-key="color.rdm"
@@ -1000,8 +988,8 @@ document.addEventListener('DOMContentLoaded', _ => {
               백마도사 <span class="text-muted">(환술사)</span>
             </label>
             <span class="input-group">
-              <label class="input-value-style job" for="input-color-whm">
-                <img src="../share/img/class/whm.png" />
+              <label class="input-value-style job class-whm" for="input-color-whm">
+                <span class="flex-column-i-icon"></span>
               </label>
               <input type="text" id="input-color-whm" style="width: 10rem"
                      data-config-key="color.whm"
@@ -1013,8 +1001,8 @@ document.addEventListener('DOMContentLoaded', _ => {
               학자
             </label>
             <span class="input-group">
-              <label class="input-value-style job" for="input-color-sch">
-                <img src="../share/img/class/sch.png" />
+              <label class="input-value-style job class-sch" for="input-color-sch">
+                <span class="flex-column-i-icon"></span>
               </label>
               <input type="text" id="input-color-sch" style="width: 10rem"
                      data-config-key="color.sch"
@@ -1026,8 +1014,8 @@ document.addEventListener('DOMContentLoaded', _ => {
               점성술사
             </label>
             <span class="input-group">
-              <label class="input-value-style job" for="input-color-ast">
-                <img src="../share/img/class/ast.png" />
+              <label class="input-value-style job class-ast" for="input-color-ast">
+                <span class="flex-column-i-icon"></span>
               </label>
               <input type="text" id="input-color-ast" style="width: 10rem"
                      data-config-key="color.ast"
@@ -1045,8 +1033,8 @@ document.addEventListener('DOMContentLoaded', _ => {
               소환사 <span class="text-muted">(비술사)</span>
             </label>
             <span class="input-group">
-              <label class="input-value-style job" for="input-color-smn-pet">
-                <img src="../share/img/class/garuda.png" />
+              <label class="input-value-style job class-garuda" for="input-color-smn-pet">
+                <span class="flex-column-i-icon"></span>
               </label>
               <input type="text" id="input-color-smn-pet" style="width: 10rem"
                      data-config-key="color.smn-pet"
@@ -1059,8 +1047,8 @@ document.addEventListener('DOMContentLoaded', _ => {
               학자
             </label>
             <span class="input-group">
-              <label class="input-value-style job" for="input-color-sch-pet">
-                <img src="../share/img/class/selene.png" />
+              <label class="input-value-style job class-selene" for="input-color-sch-pet">
+                <span class="flex-column-i-icon"></span>
               </label>
               <input type="text" id="input-color-sch-pet" style="width: 10rem"
                      data-config-key="color.sch-pet"
@@ -1073,8 +1061,8 @@ document.addEventListener('DOMContentLoaded', _ => {
               기공사
             </label>
             <span class="input-group">
-              <label class="input-value-style job" for="input-color-mch-pet">
-                <img src="../share/img/class/bishop.png" />
+              <label class="input-value-style job class-bishop" for="input-color-mch-pet">
+                <span class="flex-column-i-icon"></span>
               </label>
               <input type="text" id="input-color-mch-pet" style="width: 10rem"
                      data-config-key="color.mch-pet"
@@ -1087,8 +1075,8 @@ document.addEventListener('DOMContentLoaded', _ => {
               초코보
             </label>
             <span class="input-group">
-              <label class="input-value-style job" for="input-color-chocobo">
-                <img src="../share/img/class/chocobo.png" />
+              <label class="input-value-style job class-chocobo" for="input-color-chocobo">
+                <span class="flex-column-i-icon"></span>
               </label>
               <input type="text" id="input-color-chocobo" style="width: 10rem"
                      data-config-key="color.chocobo"
@@ -1101,14 +1089,29 @@ document.addEventListener('DOMContentLoaded', _ => {
             기타
           </h3>
           <p class="control">
+            <label for="input-color-gauge-default"
+                   data-locale="config.color.gauge-default">
+              기본 색상
+            </label>
+            <span class="input-group">
+              <label class="input-value-style job" for="input-color-gauge-default">
+                <span class="flex-column-i-icon"></span>
+              </label>
+              <input type="text" id="input-color-gauge-default"
+                     data-config-key="color.gauge-default"
+                     data-style="background"
+                     style="width: 10rem" />
+            </span>
+          </p>
+          <p class="control">
             <label for="input-color-limit-break"
                    data-locale="config.color.limit-break">
               리밋 브레이크
             </label>
             <span class="input-group">
-              <label class="input-value-style job"
+              <label class="input-value-style job class-limit-break"
                      for="input-color-limit-break">
-                <img src="../share/img/class/limit break.png" />
+                <span class="flex-column-i-icon"></span>
               </label>
               <input type="text" id="input-color-limit-break"
                      data-config-key="color.limit-break"
