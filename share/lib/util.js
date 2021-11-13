@@ -81,20 +81,19 @@ const resolveDotIndex = function resolveDotIndex(o, p, v) {
 const resolveClass = function resolveJobFromName(_job, _name) {
   _job = _job || ''
 
-  let o = /^(.+?) \((.+?)\)$/.exec(_name)
+  const o = /^(.+?) \((.+?)\)$/.exec(_name)
   if(!o) {
     if(_name === 'Limit Break' || _name === '리미트 브레이크') {
-      return ['limit break', 'Limit Break', '']
+      return ['limit-break', 'Limit Break', false]
     } else {
-      return [_job.toLowerCase(), _name, '']
+      return [_job.toLowerCase(), _name, false]
     }
+  } else if(_job) {
+    return [_job.toLowerCase(), o[1], false]
+  } else {
+    o[0] = PET_MAPPING[o[1]] || 'chocobo'
+    return o
   }
-
-  let name = o[1]
-  let owner = o[2]
-
-  // TODO: make this localizable again
-  return [PET_MAPPING[name] || 'chocobo', name, owner]
 }
 
 const resolveOwner = function resolveOwner(_) {
@@ -149,6 +148,44 @@ const pFloat = function parseLocaledFloat(string) {
 const pInt = function parseLocaledInteger(string) {
   if(typeof string !== 'string') return string
   else return parseInt(string.replace(/[,.]/g, ''))
+}
+
+const ABBREVIATION_SUFFIXES = ['', 'k', 'M', 'G', 'T']
+
+const formatDps = function formatDPSNumberWithSmalls(number, decimals, abbr, type, forceInt) {
+  number = number || 0
+  decimals = decimals == null? 2 : +decimals
+  type = (type || 'dps') + ' lower'
+
+  const exponential = Math.floor(Math.log10(number))
+  const abbrUnit = abbr? Math.max(0, Math.min(4, Math.floor((exponential - 1) / 3))) : 0
+  const suffix = ABBREVIATION_SUFFIXES[abbrUnit]
+
+  number /= Math.pow(10, abbrUnit * 3)
+  decimals = (forceInt && !abbrUnit)? 0 : decimals
+
+  number = (
+    typeof number === 'string'? pFloat(number)
+  : typeof number === 'number'? number
+  : 0).toFixed(decimals)
+
+  if(number >= 1000 || abbrUnit) {
+    type += ' with-larger-digits'
+  }
+
+  const decimalLength = ((decimals > 0) + decimals)
+
+  let upper, lower, tail
+  const upperEndsAt = Math.max(0, number.length - decimalLength - (abbrUnit? 0 : 3))
+  const lowerEndsAt = (abbrUnit? 0 : -decimalLength) || undefined
+
+  upper = number.slice(0, upperEndsAt)
+  lower = number.slice(upperEndsAt, lowerEndsAt)
+  tail = lowerEndsAt? number.slice(lowerEndsAt) : suffix
+
+  const wrappedLower = '<small class="' + type + '">' + lower + '</small>'
+  const wrappedTail = '<small>' + tail + '</small>'
+  return upper + wrappedLower + (tail? wrappedTail : '')
 }
 
 const sanitize = _ => _.toLowerCase().replace(/[^a-zA-Z0-9]/g, '-')

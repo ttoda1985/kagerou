@@ -43,8 +43,14 @@
         "combine_pet": "Begleiter zusammenfassen",
         "split-by-comma": "Mehrfache Namen mit ',' trennen",
         "basic": "Allgemeine Einstellungen",
-        "footer": {
+        "footer-visibility": {
           "_": "Fußzeile",
+          "show": "*Show as normal",
+          "use-header-instead": "*Oben anzeigen",
+          "hide": "*Nicht zeigen"
+        },
+        "footer": {
+          "_": "Fußzeilenelemente",
           "rank": "Derzeitiger Rang",
           "rdps": "Raid DPS",
           "rhps": "Raid HPS",
@@ -87,8 +93,6 @@
       "color": {
         "_": "Balkenfarben",
         "reset-this": "Farben zurücksetzen",
-        "position": "Rollen-Farbe",
-        "position-none": "Ausblenden mit 'none'",
         "etc": "Sonstiges",
         "pet-buddy": "Begleiter"
       },
@@ -120,7 +124,8 @@
         "config-to-export": "Auswählen was exportiert werden soll",
         "all": "Alles",
         "data-fault": "Die Daten falsch war.",
-        "content-count": "Anzahl der Teile"
+        "content-count": "Anzahl der Teile",
+        "open-prompt": "Öffnen Eingabefenster"
       },
       "etc": {
         "_": "Erweitert",
@@ -141,8 +146,8 @@
       "info": {
         "_": "Über",
         "created-by": "Created by",
-        "servers": "Carbuncle@KR / Chocobo@KR",
-        "hibiya": "kuriyama hibiya",
+        "servers": "Rhamu @ Elemental / Carbuncle @ KR / Chocobo @ KR",
+        "hibiya": "hibiya inemuri / kuriyama hibiya",
         "support": "Support",
         "license": "License",
         "icon-files": "All files under share/img/class,",
@@ -204,9 +209,11 @@
       "limit-break": "Limit Break"
     },
     "format": {
+      "language": "Language",
       "significant_digit": {
         "_": "Anzahl der Nachkommastellen",
         "dps": "DPS",
+        "damage": "Damage",
         "hps": "HPS",
         "accuracy": "Fehlschlag (Verfehlt / Angriffe)",
         "critical": "% der kritischen Treffer/Heilungen"
@@ -214,13 +221,19 @@
       "myname": "Mein Name",
       "use_short_name": "Darstellung von Spielernamen",
       "use_skill_aliases": "Benutze Alias für Fähigkeitsnamen",
-      "use_tailing_pct": "*Display % after percentage value"
+      "use_tailing_pct": "*Display % after percentage value",
+      "small_lower_numbers": "*Smaller font for under-k digits of DPS",
+      "number_abbreviation": "Lassen sie die zahl in einheiten von 1000 weg"
+    },
+    "element": {
+      "narrow_nav": "*Narrower Top navigation bar"
     }
   },
   "col": {
     "i": {
       "_": "Info",
       "icon": [" ", "Class Icon"],
+      "rank": ["#", "Rank"],
       "class": ["Job", "Klasse/Job"],
       "owner": ["Besitzer", "Besitzer"],
       "name": ["Name", "Name"]
@@ -239,8 +252,9 @@
       "direct": ["DH", "*Direct Hit%"],
       "crit_direct": ["!!!", "*Critical Direct Hit% (!!!)"],
       "crittypes": ["D/!/!!!", "*Direct/Critical/!!! Count"],
-      "max": ["MaxD", "Maximaler Schaden (ohne Fähigkeitsname)"],
-      "maxskill": ["MaxDS", "Maximaler Schaden Fähigkeitsname"],
+      "critpcts": ["Crits%", "*Direct/Critical/!!! %"],
+      "max": ["Max", "Maximaler Schaden (ohne Fähigkeitsname)"],
+      "maxskill": ["Max", "Maximaler Schaden Fähigkeitsname"],
       "maxhit": ["MaxSchaden", "Maximaler Schaden (mit Fähigkeitsname)"],
       "last10": ["10s", "DPS der letzten 10s"],
       "last30": ["30s", "DPS der letzten 30s"],

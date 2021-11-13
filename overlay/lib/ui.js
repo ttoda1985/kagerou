@@ -31,6 +31,8 @@
 
       $('.tabs span', 0).classList.add('active')
       renderer.switchTab(firstTab)
+
+      return window.renderer.tabs.length
     }
   }
 
@@ -108,18 +110,35 @@
         }
       }
     }, {
-      value: 'element.resize-handle',
+      value: 'element.narrow-nav',
       callback: _ => {
-        document.body.classList.toggle('resize-handle', !_)
+        document.body.classList.toggle('narrow-nav', _)
+      }
+    }, {
+      value: 'element.hide-footer',
+      callback: _ => {
+        document.body.classList.toggle('hide-footer', _)
       }
     }].forEach( _ => _.callback(config.get(_.value)) )
   }
 
   const setFooterVisibility = function setFooterVisibility() {
-    let f = window.config.get('footer')
-    Object.keys(f)
-          .filter(_ => _ !== 'recover')
-          .forEach(_ => $(`.footer-${_}`, 0).classList.toggle('hidden', !f[_]))
+    let r = false
+    const f = window.config.get('footer')
+    for(let _ in f) {
+      if(_ === 'recover') {
+        continue
+      }
+      const el = $(`.footer-${_}`, 0)
+      if(f[_]) {
+        el.classList.remove('hidden')
+      } else {
+        el.classList.add('hidden')
+        r = true
+      }
+    }
+
+    return r
   }
 
   window.addEventListener('load', () => {
@@ -289,12 +308,18 @@
         config.setResizeFactor()
         config.attachOverlayStyle()
         window.l.setLang(config.get('lang'))
-        setFooterVisibility()
 
         window.renderer = new Renderer(window.config.get())
-        if(!window.tabdisplay)
-          window.tabdisplay = new TabDisplay()
-        window.tabdisplay.render()
+        if(hist.currentData) renderer.render(hist.currentData)
+
+        window.tabdisplay = new TabDisplay()
+
+        $('footer', 0).classList.toggle('hidden',
+          window.config.get('element.hide-footer') ||
+         (window.config.get('element.use-header-instead') ||
+          setFooterVisibility() === 0) &&
+          window.tabdisplay.render() === 1
+        )
 
         loadFormatButtons()
         return

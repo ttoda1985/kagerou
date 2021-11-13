@@ -27,7 +27,7 @@ Raven && Raven.config('https://77d763feffdf45daa9a75517878489cd@s.hibiya.moe/2',
   // to who plays with forked source:
   // please do *not* report your error to me. do NOT edit this, or simply
   // remove raven-related codes.
-  whitelistUrls: [/hibiyasleep\.github\.io/, /kagerou\.hibiya\.moe/],
+  whitelistUrls: [/hibiyasleep\.github\.io/, /kagerou\.hibiya\.moe/, /idyllshi.re/],
   dataCallback: function(data) {
     if(window.hist && window.hist.currentData) {
       data.extra.currentData = JSON.stringify(window.hist.currentData)
@@ -37,19 +37,19 @@ Raven && Raven.config('https://77d763feffdf45daa9a75517878489cd@s.hibiya.moe/2',
 }).install()
 
     </script>
-    <script src="../share/lib/util.js?v=remind-blue"></script>
-    <script src="../share/lib/config.js?v=remind-blue"></script>
+    <script src="../share/lib/util.js?v=save-your-tears-save-your-dreams"></script>
+    <script src="../share/lib/config.js?v=save-your-tears-save-your-dreams"></script>
     <script>
 'use strict'
 
 Raven && Raven.setRelease(VERSION)
 
     </script>
-    <script src="../share/lib/ws-abstract.js?v=remind-blue"></script>
-    <script src="../share/lib/locale.js?v=remind-blue"></script>
-    <script src="lib/render.js?v=remind-blue"></script>
-    <script src="lib/listen.js?v=remind-blue"></script>
-    <script src="lib/ui.js?v=remind-blue"></script>
+    <script src="../share/lib/ws-abstract.js?v=save-your-tears-save-your-dreams"></script>
+    <script src="../share/lib/locale.js?v=save-your-tears-save-your-dreams"></script>
+    <script src="lib/render.js?v=save-your-tears-save-your-dreams"></script>
+    <script src="lib/listen.js?v=save-your-tears-save-your-dreams"></script>
+    <script src="lib/ui.js?v=save-your-tears-save-your-dreams"></script>
     <script>
 'use strict'
 
@@ -79,18 +79,10 @@ window.addEventListener('load', e => {
     window.renderer = new Renderer(window.config.get())
     window.renderer.updateHeader()
 
-    try {
-      window.tabdisplay = new TabDisplay()
-      tabdisplay.render()
-    } catch(e) {
-      setTimeout(_ => {
-        window.tabdisplay = new TabDisplay()
-        tabdisplay.render()
-      }, 200)
-    }
-
+    window.tabdisplay = new TabDisplay()
     window.historyUI = new HistoryUI()
 
+    window.tabdisplay.render()
     $('.history', 0).addEventListener('click', e => {
       window.historyUI.updateList()
     })
@@ -99,20 +91,12 @@ window.addEventListener('load', e => {
     layer.connect()
     layer.on('data', d => {
       window.hist.push(d)
-      if(!window.renderer) { // why why
-        window.renderer = new Renderer(window.config.get())
-        window.renderer.updateHeader()
-      }
-      window.renderer.update()
-    })
-    layer.on('status', d => {
-      if(d.type === 'lock') {
-        document.body.classList.toggle(
-          'disable-handle',
-          d.message && config.get('element.resize-handle')
-        )
+      if(window.renderer) {
+        window.renderer.update()
       }
     })
+    // layer.on('status')
+    // layer.emit('restyle')
   })
 
   $map('svg', _ => {
@@ -166,8 +150,8 @@ window.addEventListener('load', e => {
               kagerou <span class="version"> ??? </span>
             </mark>
           </span>
-          <span id="history-mob"></span>
-          <span id="history-region" class="codename"></span>
+          <span id="history-mob" class="codename"></span>
+          <span id="history-region"></span>
         </div>
         <ul class="buttons">
           <li class="button" data-button="toggle-detail"
@@ -196,26 +180,48 @@ window.addEventListener('load', e => {
       </div>
 
       <ul class="dropdown dropdown-list dropdown-history" id="dropdown-history">
-        <li class="empty">
-          <mark> 0.7.24 </mark> <span> Imaginary Reload </span>
+        <li class="empty" style="height: unset">
+          <mark class="version"> ?.?.? </mark> <span class="codename">Unknown Release</span>
           <br />
-          <span class="history-region"> '何百回と繰り返してきた' </span>
-        </li>
-        <li class="empty">
-          <mark> 0.7.25 </mark> <span> Remind Blue </span>
+          <span class="history-region description"> </span>
           <br />
-          <span class="history-region"> '君の歌った「大人が嫌いな歌」を' </span>
+          <span class="history-region"> </span>
         </li>
         <li class="empty">
-          <mark class="version"> ?.?.?? </mark> <span class="codename">Unknown Release</span>
-          <br/>
-          <span class="history-region description"> - </span>
+          <mark> 0.8.11 </mark> <span> save your tears, save your dreams </span>
+          <br />
+          <span class="history-region"> ささやかな幻よ、煌け！ </span>
         </li>
-        <!-- <li class="empty">
-          <mark> 0.8.0</mark>? <span> GAMBOL </span>
-          <br/>
-          <span class="history-region"> ANOTHER 12 </span>
-        </li> -->
+        <li class="empty">
+          <mark> 0.8.10 </mark> <span> City of Mirrors </span>
+          <br />
+          <span class="history-region"> なんびとの心も映す鏡の如きヴォカリーズ曲 </span>
+        </li>
+        <li class="empty">
+          <mark> 0.8.9 </mark> <span> Northen Cross </span>
+          <br />
+          <span class="history-region"> 燦然とピアノを照らす もうひとつの十字星 </span>
+        </li>
+        <li class="empty">
+          <mark> 0.8.8 </mark> <span> Deprived World </span>
+          <br />
+          <span class="history-region"> …この儚くも美しい　「奪われた世界」を </span>
+        </li>
+        <li class="empty">
+          <mark> 0.8.5 </mark> <span> phantasmagoria </span>
+          <br />
+          <span class="history-region"> 長き道夫振り返り　小さな光へ歩き出す </span>
+        </li>
+        <li class="empty">
+          <mark> 0.8.4 </mark> <span> tears proof masquerade </span>
+          <br />
+          <span class="history-region"> 偽りなき技巧が　挑戦への扉を開く </span>
+        </li>
+        <li class="empty">
+          <mark> 0.8.2 </mark> <span> point zero </span>
+          <br />
+          <span class="history-region"> 「ゼロからスタートする」 </span>
+        </li>
       </ul>
       <ul class="dropdown buttons right" id="dropdown-more">
         <li data-button="merge-pet" data-active-by="label"
@@ -305,18 +311,18 @@ window.addEventListener('load', e => {
           <li id="init-menu">
             <ul>
               <li class="text">
-                - @hibiyasleep
+                - hibiyasleep
               </li>
               <li class="button" data-button="donate">
                 <label data-locale="ui.menu.donate">기부</label>
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12"
                      viewBox="0 0 24 24" class="icon">
                   <path d="M20 6h-2.18c.11-.31.18-.65.18-1 0-1.66-1.34-3-3-3-1.05 0-1.96.54-2.5 1.35l-.5.67-.5-.68C10.96 2.54 10.05 2 9 2 7.34 2 6 3.34 6 5c0 .35.07.69.18 1H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-5-2c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zM9 4c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm11 15H4v-2h16v2zm0-5H4V8h5.08L7 10.83 8.62 12 11 8.76l1-1.36 1 1.36L15.38 12 17 10.83 14.92 8H20v6z" />
                 </svg>
               </li>
               <li class="button" data-button="settings">
                 <label data-locale="ui.menu.settings">설정</label>
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12"
                      viewBox="0 0 24 24" class="icon">
                   <path d="M19.43 12.98c.04-.32.07-.64.07-.98s-.03-.66-.07-.98l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.3-.61-.22l-2.49 1c-.52-.4-1.08-.73-1.69-.98l-.38-2.65C14.46 2.18 14.25 2 14 2h-4c-.25 0-.46.18-.49.42l-.38 2.65c-.61.25-1.17.59-1.69.98l-2.49-1c-.23-.09-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64l2.11 1.65c-.04.32-.07.65-.07.98s.03.66.07.98l-2.11 1.65c-.19.15-.24.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1c.52.4 1.08.73 1.69.98l.38 2.65c.03.24.24.42.49.42h4c.25 0 .46-.18.49-.42l.38-2.65c.61-.25 1.17-.59 1.69-.98l2.49 1c.23.09.49 0 .61-.22l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.65zM12 15.5c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5z" />
                 </svg>
@@ -324,35 +330,44 @@ window.addEventListener('load', e => {
             </ul>
           </li>
           <li id="patchnote">
-            <!-- svg xmlns="http://www.w3.org/2000/svg" width="416" height="128"
-                 viewBox="0 0 416 128"
-                 style="max-width: 100%; max-height: 3rem; margin-top: 0.5rem">
-            </svg -->
+            <h3> 0.8.12 'Supersymmetry' - 2021/10/21 </h3>
 
-            <h3 class="lang ko"> 0.7.26 '로스트 데이 아워' - 2019/07/01 </h3>
-            <h3 class="lang en de fr cn"> 0.7.26 'Lost-day Hours' - 2019/07/01 </h3>
-            <h3 class="lang ja"> 0.7.26 'ロストデイアワー' - 2019/07/01 </h3>
+            <p class="lang ko">
+              - maxhit 숫자 버그 수정
+            </p>
+            <p class="lang en fr de cn">
+              - maxhit numerals fixed
+            </p>
+            <p class="lang ja">
+              - maxhit 数値の表示を訂正
+            </p>
+            <p class="lang ko">
+              - 탭 항목에 '순위' 추가
+            </p>
+            <p class="lang en fr de cn">
+              - new tab item 'Rank' added
+            </p>
+            <p class="lang ja">
+              - タブの項目に「ランク」を追加
+            </p>
 
-            <p class="lang ko"> 무희의 스킬명 약칭을 추가 </p>
-            <p class="lang en"> Added DNC skill name abbreviation </p>
-            <!-- <p class="lang ja"> 踊り子のスキル名略称を追加 </p> -->
+            <h3> 0.8.11 'save your tears, save your dreams' - 2021/09/04 </h3>
 
-            <p class="lang ko"> 직업이 있는 경우 소환수로 취급하지 않음 </p>
-            <p class="lang en de fr cn"> Will not merge 'pets' if it has valid job </p>
-            <p class="lang ja"> ジョブがある場合、召喚獣ではないものとして取り扱う </p>
+            <p class="lang ko">
+              - 데스카운트 순 정렬 추가
+            </p>
+            <p class="lang en fr de cn">
+              - deathcounts added to sort option
+            </p>
+            <p class="lang ja">
+              - death count ソートを追加
+            </p>
 
-            <h3 class="lang ko"> 0.7.25 '리마인드 블루' - 2019/07/01 </h3>
-            <h3 class="lang en de fr cn"> 0.7.25 'Remind Blue' - 2019/07/01 </h3>
-            <h3 class="lang ja"> 0.7.25 'リマインドブルー' - 2019/07/01 </h3>
-
-            <p> GNB / DNC </p>
-
-            <h3 class="lang ko"> 0.7.24 '이매지너리 리로드' - 2019/06/22 </h3>
-            <h3 class="lang en de fr cn"> 0.7.24 'Imaginary Reload' - 2019/06/22 </h3>
-            <h3 class="lang ja"> 0.7.24 'イマジナリーリロード' - 2019/06/22 </h3>
-
-            <p> BLU support </p>
-
+            <h3> 0.8.10 'City of Mirrors' - 2021/06/28 </h3>
+            <h3> 0.8.9 'Northern Cross' - 2021/06/07 </h3>
+            <h3> 0.8.6 'Deprived World' - 2021/05/11 </h3>
+            <h3> 0.8.5 'phantasmagoria' - 2020/12/07 </h3>
+            <h3> 0.8.4 'tears proof masquerade' - 2020/06/17 </h3>
           </li>
         </ul>
       </ul>
@@ -362,13 +377,13 @@ window.addEventListener('load', e => {
         </div>
         <span class="footer-stat">
           <span class="footer-rank">
-            <span id="rank">0/0</span>
+            <span id="rank">0<small>/0</small></span>
           </span><!--
        --><span class="footer-rdps">
-            <span id="rdps">0</span>dps
+            <span id="rdps">0</span><small>dps</small>
           </span><!--
        --><span class="footer-rhps">
-            <span id="rhps">0</span>hps
+            <span id="rhps">0</span><small>hps</small>
           </span>
         </span>
       </footer>
